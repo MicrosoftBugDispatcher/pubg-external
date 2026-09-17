@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}</ProjectGuid>
+    <RootNamespace>pubg_external</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)bin\intermediate\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>root\dependencies\freetype\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;root\dependencies\freetype\lib\x64\freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="root\entry.cxx" />
+    <ClCompile Include="root\engine\engine.cxx" />
+    <ClCompile Include="root\engine\xenuine.cxx" />
+    <ClCompile Include="root\driver\athena\hypervisor\hvre.cpp" />
+    <ClCompile Include="root\driver\athena\hypervisor\hypercall.cpp" />
+    <ClCompile Include="root\features\aimbot\aimbot.cxx" />
+    <ClCompile Include="root\features\visuals\visuals.cxx" />
+    <ClCompile Include="root\overlay\hijack.cxx" />
+    <ClCompile Include="root\overlay\renderer.cxx" />
+    <ClCompile Include="root\dependencies\imgui\imgui.cpp" />
+    <ClCompile Include="root\dependencies\imgui\imgui_draw.cpp" />
+    <ClCompile Include="root\dependencies\imgui\imgui_tables.cpp" />
+    <ClCompile Include="root\dependencies\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="root\dependencies\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="root\dependencies\imgui\imgui_impl_dx11.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="root\engine\engine.hxx" />
+    <ClInclude Include="root\engine\offsets\offsets.hxx" />
+    <ClInclude Include="root\engine\math\math.hxx" />
+    <ClInclude Include="root\engine\functions\functions.hxx" />
+    <ClInclude Include="root\engine\xenuine.hxx" />
+    <ClInclude Include="root\driver\driver.hxx" />
+    <ClInclude Include="root\driver\athena\hypervisor\hvre.hpp" />
+    <ClInclude Include="root\driver\athena\hypervisor\hypercall.hpp" />
+    <ClInclude Include="root\driver\athena\hypervisor\hypercall_def.h" />
+    <ClInclude Include="root\additional\logger\logger.cuh" />
+    <ClInclude Include="root\additional\config\config.hxx" />
+    <ClInclude Include="root\features\aimbot\aimbot.hxx" />
+    <ClInclude Include="root\features\visuals\visuals.hxx" />
+    <ClInclude Include="root\overlay\hijack.hxx" />
+    <ClInclude Include="root\overlay\renderer.hxx" />
+    <ClInclude Include="root\dependencies\imgui\imgui.h" />
+    <ClInclude Include="root\dependencies\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="root\dependencies\imgui\imgui_impl_dx11.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="root\driver\athena\hypervisor\vmexit.asm" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
